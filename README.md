@@ -21,9 +21,7 @@ Uses new Core2
 
 # CLOUDCOIN CONSORTIUM'S CLOUDSERVER VERSION 2 June-22-2018 MIT LICENCE
 
-This Software is provided as is with all faults, defects 
-and errors, and without warranty of any kind.
-Free from the CloudCoin Consortium. You can see a working sample here:
+This Software is provided as-is with all faults, defects, and errors, and without warranty of any kind. Free from the CloudCoin Consortium. You can see a working sample here:
 
 https://bank.cloudcoin.global/
                                                  
@@ -37,24 +35,20 @@ CloudBank offers many services:
 
 
 # Banking Services
-The purpose is to allow software to pown coins. 
+The purpose is to allow the software to pown CloudCoins. 
 Some examples of use:
 
 You sell products from your website and want to accept CloudCoins as payment. 
 
-You want to sell virtule goods in your minecraft server without worrying about charge backs.
+You want to sell virtual goods in your Minecraft server without worrying about chargebacks.
 
-You create an accounting system and want to recieve and export CloudCoins.
+You can create an accounting system and want to receive and export CloudCoins.
 
+NOTES: To Stop Replay attacks and other security concerns, HTTPS.
 
+For receiving CloudCoins, you may only need a few services. The other services may be shut down to reduce the security surface. Necessary services include: Echo, (Deposit or Import One Stack), Get Receipt. The Print Welcome, Show Coins, Export One Stack services can be shut off if you will collect your CloudCoins from the hard drive of the webserver that runs the CloudBank. 
 
-NOTES: To Stop Replay attacks and other sercurity concenrs, HTTPS.
-
-For receiving CloudCoins, you may only need a few services. The other services may be shut down to reduce the security surface. Services that are neccessary include: Echo, (Deposite or Import One Stack), Get Receipt. The Print Welcome, Show Coins, Expot One Stack services can be shut off if you will collect your CloudCoins from the harddrive of the web server that runs CloudBank. 
-
-Note that this fist phaze service uses file-based storage and not a database. 
-
-
+Note: that this fist Phase service uses file-based storage and not a database. 
 
 Many services are available:
 1. Print Welcome
@@ -85,7 +79,7 @@ The name of the servers is the URL:
 
 bank_server =  https://bank.CloudCoin.com/ (Use the name of the local host)
 
-The time will always be in ISO 8601 zulu time. 
+The time will always be in ISO 8601 Zulu time. 
 
 For security, the system admin must setup SSL and limit the servers that can connect to this web server. 
 ----------------------------------------------------------------
@@ -108,7 +102,7 @@ The CloudBank requires a key and will be in the following format
 
 ## PRINT WELCOME SERVICE
 
-Get's the bank's welcome information. Note that the web server must be configured to use extentionless urls.
+Get's the bank's welcome information. Note that the webserver must be configured to use extensionless URLs.
 
 Sample request
 ```http
@@ -241,7 +235,7 @@ Sample Response if receipt number already in use :
 
 ## DEPOSIT SERVICE WITH CHANGE
 
-Allows a stack of CloudCoins to be uploaded and powned on the server. This service does not tell the caller about the status of the pown but gives a receipt that the client can look at later. The request is a post request but may include the GET parameter "rn" (receipt number). If the rn parameter is included it must be a GUID without hyphends. The service will then use the customer's rn as the receipt number instead of generating its own. 
+Allows a stack of CloudCoins to be uploaded and powned on the server. This service does not tell the caller about the status of the pown but gives a receipt that the client can look at later. The request is a post request but may include the GET parameter "rn" (receipt number). If the rn parameter is included, it must be a GUID without hyphens. The service will then use the customer's rn as the receipt number instead of generating its own. 
 
 
 Sample POST Request:
@@ -369,10 +363,11 @@ https://bitshares.CloudCoin.global/bank/get_receipt.aspx?rn=ef50088c8218afe53ce2
 ```
 rn= Receipt Number.
 
-Account is the account ID within the bank
+The account is the account ID within the Bank.
 
 ### Sample Response
-If powning process has not been started
+
+If the powning process has not been started.
 ```http
 {
 	"receipt_id": "e054a34f2790fd3353ea26e5d92d9d2f",
@@ -419,7 +414,7 @@ If powning process has not been started
 }
 ```
 
-If powning process is complete:
+If the powning process is complete:
 ```http
 {
         "receipt_id":"e054a34f2790fd3353ea26e5d92d9d2f",
@@ -467,7 +462,7 @@ If powning process is complete:
 ```
 ## SHOW COINS SERVICE 
 
-Gets the totals of CloudCoins in the bank.
+Gets the totals of the CloudCoins in the Bank.
 
 Sample GET Request:
 
@@ -552,23 +547,23 @@ Sample Response if fail:
 
 # Exchange Services
 
-These services allow you to exchange your CloudCoins for other money or even goods and services. Exchange services include:
+
+These services allow you to exchange your CloudCoins for other monies or even goods and services. Exchange services include:
 
 * Show Coins For Sale
-* Place Order using Green.money ach
+* Place Order using Green. money ach
 * Check Green Money order
-* Place order using PayPal and Fulfill
-* Place order using Stripe and Fulfill
+* Place an order using PayPal and Fulfill
+* Place an order using Stripe and Fulfill
 * Fulfil Order with custom text
-* Advertsie on Exchange
-
+* Advertise on Exchange
 
 
 
 
 
 ## Show Coins For Sale
-Gets the totals of CloudCoins in the bank.The price in different currencies, the payment methods that are accepted.
+Gets the totals of the CloudCoins in the bank. The price in different currencies and the payment methods that are accepted.
 
 Sample GET Request:
 
@@ -613,7 +608,7 @@ Sample Response if fail:
 
 
 ## Mark Coins For Sale
-This allows the account owner to mark some of their coins for sale so that others will be able to buy them. 
+This allows the account owner to mark some of their CloudCoins for sale so that others will be able to buy them. 
 
 Sample GET Request:
 
@@ -649,7 +644,9 @@ Sample Response if fail:
 
 ## Place Order With Green.money ACH
 
-This allows an order to be placed using the Green.money ACH payment system. Note that you will need an account with Green.money. You will need a web form that posts specific into and a default Green Pay button. 
+
+This allows an order to be placed using the Green. Money ACH payment system. 
+Note: You will need an account with Green.money. and a web form that posts specifically into and a default Green Pay button. 
 
 Sample POST Request:
 
@@ -729,16 +726,16 @@ NOTE: The programmer should add the exact reason the customer was not able to re
 
 # BILL PAY SERVICE
 
-This is a task that is called every day. The program checks the Excel spreadsheet to see if bills need to be paid.The Excell spread sheet is a standardized spreadsheet.
+This is a task that is called upon every day. The program checks the Excel spreadsheet to see if bills need to be paid.T he Excell spreadsheet is standard.
 
 FileName: BillPay
-Sheets within: Reoccurring, Onetime, Pending, Complete, Requested and  History (one for each month)
+Sheets within: Re-occurring, Onetime, Pending, Complete, Requested and  History (one for each month)
 
 
 Column Headers:
 
 ### Reoccurring 
-Used to mark payments that should be paid automatically each month. These records are not deleted. They will be checked everyday and payments assigned to that day of the month will be made and copied to the Pending folder. 
+Used to mark payments that should be paid each month automatically. These records are not deleted. They will be checked every day, and the payments assigned to that day of the month will be made and copied to the Pending folder. 
 1. Status: Active or Deactive.
 2. PAY TO THE ORDER OF ( Payee Name )
 3. SEND TO EMAIL ( Payee Email )
@@ -747,11 +744,11 @@ Used to mark payments that should be paid automatically each month. These record
 6. AMOUNT (Amount of CloudCoin to be sent )
 7. SIGNED BY ( Who is sending the CloudCoins )
 8. YOUR EMAIL ( Senders Email )
-9. YOUR OTHER CONTACT INFO ( Other information that can be included to for contact )
+9. YOUR OTHER CONTACT INFO ( Other information that can be included too, for the contact )
 10. DAYS EXPIRES AFTER (Number of days the check will expire after it is written) 
 
 ### Onetime 
-The system checks this list once each day. The Bill pay will make the payment and send to pending. Then the payment is deleted from this list)
+The system checks this list once each day. The Bill pay will make the payment and send it to pending. Then the payment is deleted from this list)
 1. Status: Active or Deactive.
 2. PAY TO THE ORDER OF ( Payee Name )
 3. SEND TO EMAIL ( Payee Email )
@@ -760,20 +757,21 @@ The system checks this list once each day. The Bill pay will make the payment an
 6. AMOUNT (Amount of CloudCoin to be sent )
 7. SIGNED BY ( Who is sending the CloudCoins )
 8. YOUR EMAIL ( Senders Email )
-9. YOUR OTHER CONTACT INFO ( Other information that can be included to for contact )
+9. YOUR OTHER CONTACT INFO  (Other information that can be included too, for the contact )
 10. DAYS EXPIRES AFTER (Number of days the check will expire after it is written) 
 
+
 ### Pending
-This holds all checks that have been sent but have not been cashed yet. Once they are cashed, they are deleted from pending and moved to  Paid. Payments in pending can be marked Cancel. If they are marked Cancel the money will be put back in the bank. Records will be checked for Cancel once each day. If they are marked as Hold. The check cashing service will not be allowed to give the user money until the status is changed to Pending. 
+This holds all the checks that have been sent but have not been cashed yet. Once they are cashed, they are deleted from pending and moved to  Paid. Payments in pending can be marked Cancel. If they are marked Cancel, the money will be put back into the bank. Records will be checked for Cancel once each day. If they are marked as Hold. The check cashing service will not be allowed to give the user money until the status is changed to Pending. 
 1. STATUS (Pending, Hold or Cancel)
 2. PAY TO THE ORDER OF ( Payee Name )
 3. SEND TO EMAIL ( Payee Email )
 4. ACCOUNT NUMBER OR MEMO 
 5. DATE MOVED TO PENDING ( Day that the check was moved to pending )
-6. AMOUNT (Amount of CloudCoin to be sent )
+6. AMOUNT (Amount of CloudCoins to be sent )
 7. SIGNED BY ( Who is sending the CloudCoins )
 8. YOUR EMAIL ( Senders Email )
-9. YOUR OTHER CONTACT INFO ( Other information that can be included to for contact )
+9. YOUR OTHER CONTACT INFO  ( Other information that can be included too, for the contact )
 10. DAYS EXPIRES AFTER (Number of days the check will expire after it is written) 
 
 ### Completed
@@ -782,14 +780,14 @@ This holds all checks that have been sent but have not been cashed yet. Once the
 3. SEND TO EMAIL ( Payee Email )
 4. ACCOUNT NUMBER OR MEMO 
 5. DATE MOVED TO PENDING ( Day that the check was moved to pending )
-6. AMOUNT (Amount of CloudCoin to be sent )
+6. AMOUNT (Amount of CloudCoins to be sent )
 7. SIGNED BY ( Who is sending the CloudCoins )
 8. YOUR EMAIL ( Senders Email )
-9. YOUR OTHER CONTACT INFO ( Other information that can be included to for contact )
+9. YOUR OTHER CONTACT INFO  ( Other information that can be included too, for the contact )
 10. DATE COMPLETED
 
 ### Archive Month Year ( e.g. Archive December 2017 )
-Creates a sheet with all the payments from a month and year for historical purposes. 
+Creates a sheet with all the payments from each month and year for historical purposes. 
 1. STATUS (Paid, Canceled, Expired)
 2. PAY TO THE ORDER OF ( Payee Name )
 3. SEND TO EMAIL ( Payee Email )
@@ -798,7 +796,7 @@ Creates a sheet with all the payments from a month and year for historical purpo
 6. AMOUNT (Amount of CloudCoin to be sent )
 7. SIGNED BY ( Who is sending the CloudCoins )
 8. YOUR EMAIL ( Senders Email )
-9. YOUR OTHER CONTACT INFO ( Other information that can be included to for contact )
+9. YOUR OTHER CONTACT INFO ( Other information that can be included too, for the contact )
 10. DATE COMPLETED
 
 
@@ -810,10 +808,10 @@ The following actions will take place one or more times each day according to th
 3 Reoccurring standard not finished.
 ### Onetime
 1 Checks on the PayOnce to see if there is anything there. If yes, calls on the check making service and deletes the record from Onetime.
-2 Creates new check in Pending
+2 Creates a new check in Pending
 3 v standard not finished
 ### Pending
-1. Bill Pay looks at the Pending to see if and are canceled. Put the canceled stack back into bank and deletes from pending.Writes Canceled to Completed worksheet. 
+1. Bill Pay looks at the Pending to see if any are canceled. Puts the canceled stack back into bank and deletes it from pending.Writes Canceled to the Completed worksheet. 
 2. Do not allow checks to be cashed that are canceled or on hold. 
 Pending protocol not finished
 ### Complete
@@ -823,9 +821,9 @@ Complete protocol not finished.
 
 ## WRITE & SEND CHECK SERVICE
 1. Make a check: Creates a stack file with a GUID and saves it in the Check folder
-In CloudBank, a Check is a url that point to a stack file that is located in the Check folder.
+In CloudBank, a Check is a url that points to a stack file that is located in the Check folder.
 
-Gets the totals of CloudCoins in the bank
+Gets the totals of the CloudCoins in the bank
 
 Sample POST Request:
 
@@ -835,7 +833,7 @@ pk (private key) The user's secret info to allow the person to make the check
 
 action How to send the check: email, url (just show the url), sms (maybe others to be supported later)
 
-amount amount of CloudCoins to put in stac file
+amount the amount of CloudCoins to put in a stack file
 
 checkid (The check's unique identifier
 
@@ -843,7 +841,7 @@ emailto (recievers contact info)
 
 payto (Person who is suppose to get the check)
 
-from (person or organization check is from)
+from (person or organization the check is from)
 
 by (Who signed the check)
 
@@ -938,18 +936,18 @@ Sample link to cash check:
 ```html
 https://bank.cloudcoin.global/checks?id=c3c3ab7b75ab4d089d2d4a287c1ef232
 ```
-1. Gathers CloudCoins into a stack and puts the stack file into the "check" folder.
+1. Gathers the CloudCoins into a stack and puts the stack file into the "check" folder.
 2. Emails a link to the check to the payee.
-3. Writes the Check Id (GUID) to the excel spread sheet.
-4. Writes the send date to the excel spread sheet.
+3. Writes the Check Id (GUID) to the excel spreadsheet.
+4. Writes the send date to the excel spreadsheet.
 5. Send email:
 Subject: Check for 2440 CloudCoins
-Contains link to check:
+Contains a link to check:
 
 ## CHECK CASHING SERVICE
-Allows user to download CloudCoins based on a check number. 
-1. Checks to see if the excel spread sheet has the check on hold. 
-2. Gives the stack file that the users wants to the user.
+This allows the user to download CloudCoins based on a check number. 
+1. Checks to see if the excel spreadsheet has the check on hold. 
+2. Gives the stack file that the user wants to the user.
 3. Updates the spreadsheet to show the date cashed. 
 
 The request includes a receive parameter
@@ -957,6 +955,7 @@ receive=email
 receive=sms
 receive=download
 receive=json
+
 
 
 Sample GET Request for a raw json stack file that can be imported into a program:
@@ -1018,9 +1017,9 @@ NOTE: This standard is not finished. We may want to tell them it has already bee
 ## Change_Maker Service 
 # ##################
 Tells the Bank to break a CloudCoin note into several smaller notes.
-Note that there are many (but a finte) way of making chage for each denomination. Each denomination will have a list (or matrix) of possible breaks with an id for Method for each possible method. 
+Note that there are many (but a finite) way of making the change for each denomination. Each denomination will have a list (or matrix) of possible breaks with an id for each possible method.
 
-NOTE: This standard is bad and not finished. We must create a way for them to upload a single note in a stack file and then download a stack file with change. This standard in the current form fails to do this. 
+NOTE: This standard is terrible and not finished. We must create a way for them to upload a single note in a stack file and then download a stack file with the change. This standard in the current form fails to do this. 
  
 *CHANGE_MAKER REQUEST STRING*
 
@@ -1186,8 +1185,8 @@ Strings are picked from lists of words, Numbers and guids are generated randomly
 Complexity
 
 For strings, this is the grade level of the word. K-12 or up to all words (20)
-For numbers this is the number of numberals to be included. 4 will return a number like 3984. 6 will return a number like 381092
-For Guids, this will return hexadecimal numbers up to the amount. 3 will return a number like: 4A7. 5 will return a number like 8FF24. Note that GUIDs are not case sensitive. 
+For numbers, this is the number of numerals to be included. 4 will return a number like 3984. 6 will return a number like 381092
+For GUIDs, this will return hexadecimal numbers up to the amount. 3 will return a number like: 4A7. 5 will return a number like 8FF24. Note that GUIDs are not case sensitive. 
 
 lang 
 
@@ -1224,34 +1223,35 @@ Secret
 
 This will always be returned as a string. You may need to convert it to a number, or hex if that is what you want.
 
-iso8601: This is the time in Coordinated Universal Time (UTC). The "T" seperates the date from the time. The "Z" is always at the end to show that it is universal. Z is the time designator for zero also called   (zulu). 
+iso8601: This is the time in Coordinated Universal Time (UTC). The "T" separates the date from the time. The "Z" is always at the end to show that it is universal. Z is the time designator for zero, also called   (Zulu). 
 
 
 https://www.w3schools.com/TAgs/ref_language_codes.asp
 
 
 
-
 # Trusted Transfer with Change Service
 
-Unlike most services, data is Sent to Trusted Transfer Over Websockets.
+
+Unlike most services, data is sent to Trusted Transfer Over Websockets.
 
 Trusted transfer is designed to be a connection-orientated way to send CloudCoins from receiver to sender and allowing a trusted third-party server to authenticate the coins in between. 
 
 
 Type:
-1. authenticate_and_forward. Checks the coins to see if they are authentic and then sends them to the reciever.
-2. just_change. Breaks the notes into smaller denominatoins. 
+1. authenticate_and_forward. Checks the coins to see if they are authentic and then sends them to the receiver.
+2. just_change. Breaks the notes into smaller denominations. 
 3. scramble. Exchanges a note for another note of the same denomination (just different serial number)
 
 Internal modes of operation
 
 The transfer can operate under four modes:
 
-1. Both parties Anonymous. No one is logged in. (N) N for No trust. (Shared secret must be generated)
-2. Sender is logged into server, receiver not trusted by Sender. (S) (Receiver can send a request for payment to the sender) 
-3. Receiver logged in, Sender not trusted by Reciever.  (R) (Receiver gives sender the public address)
-4. Both parties logged in.  (B) (Receiver can send request for payment with address of sender. No shared secret required because sender can send to public address)
+1. Both parties are anonymous. No one is logged in. (N) N for No trust. (Shared secret must be generated)
+2. The sender is logged into the server; the sender does not trust the receiver. (S) (Receiver can send a request for payment to the sender) 
+3. The receiver is logged in, the receiver does not trust the sender.  (R) (Receiver gives the sender the public address)
+4. Both parties logged in.  (B) (Receiver can send a request for payment with the address of the sender. No shared secret required because sender can send to public address)
+
 
 The sender and receiver will need a  
 
@@ -1359,7 +1359,7 @@ if counterfeit coins were sent or some other problem:
 }	 
 ```
 
-Message sent sender if the payment was sent successfully. Note that an array of CloudCoins may be attached assuming there is change due to the sender.
+Message sent to the sender if the payment was sent successfully. Note that an array of CloudCoins may be attached assuming there is change due to the sender.
 
 ```http
 {
@@ -1444,9 +1444,10 @@ Message sent sender if the payment was sent successfully. Note that an array of 
 
 If the payment failed because of:
 1. Not enough authentic CloudCoins were included.
-2. Not enough RAIDA were contacted to complete the transaction
-3. Receiver did not connect or lost contact. 
+2. Not enough RAIDA were contacted to complete the transaction.
+3. The receiver did not connect or lost contact. 
 Note that there still may be some change or CloudCoins that were not sent to the receiver being returned. 
+
 
 ```http
 {
@@ -1533,12 +1534,11 @@ Note that there still may be some change or CloudCoins that were not sent to the
 
 ## Receive From Raida
 
-Allows RAIDA to send Authenticity Numbers that can be combined and placed into accounts.The steps are: 
+Allows RAIDA to send Authenticity Numbers that can be combined and placed into accounts. The steps are: 
 
 1. The Receiver Service validates the POST Parameters.
-2. The Receiver Service sends a multi hints request to the Multi Hints service of the RAIDA to see if ticket is good. 
-3. The Receiver Service stores the entire request in “Incoming” folder in and creates a order number subfolder there for the entire request. Within that order's folder, a folder is created for every coin serial number. The title of the names of the files will be The raida number, AN number and a ".txt" extension. 
-
+2. The Receiver Service sends a multi hints request to the Multi Hints service of the RAIDA to see if the ticket is good. 
+3. The Receiver Service stores the entire request in the "Incoming" folder and creates an order number subfolder there for the entire request. Within that order's folder, a folder is created for every coin serial number. The title of the names of the files will be The raida number, AN number, and a ".txt" extension. 
 Sample Files in the Imported/8772992/16777216/ (imported, OrderNumber, Serial Number)
 
 ```html
@@ -1553,7 +1553,7 @@ Sample Files in the Imported/8772992/16777216/ (imported, OrderNumber, Serial Nu
 
 ```
 
-The parameter "to_account_name_or_number" will either be an account name that is on the CloudServer or a serial number of a cloudcoin. The serial number is a serial number that the person who will claim the coin so that they can identifiy that the coins is meant for them. The idea is that anonymouse transactions can happen if the serial number is used. 
+The parameter "to_account_name_or_number" will either be an account name that is on the CloudServer or a serial number of a CloudCoin. The serial number is a serial number that the person who will claim the coins so that they can identifiy that the coins are  meant for them. The idea is that anonymouse transactions can happen if the serial number is used. 
 
 change_to_account_name_or_number could be "keep" as in keep the change. 
 
@@ -1638,14 +1638,13 @@ Response if fail for any other reason:
 
 ## Retrieve Pay Forward Service
 
-Allows a client to get money from a Communication Broker.  
+This allows a client to get money from a Communication Broker.  
 
-The client must know the account name or number that they are using.
+The client must know the account name or the number that they are using.
 
 The client must first get a ticket to prove that they own that box. 
 
-Actio is either Download or "bank" which means move it to thei bank. 
-
+Action is either Download or "bank," which means move it to their bank. 
 
 Sample GET request
 ```http
@@ -1701,7 +1700,7 @@ change_to_account_name_or_number,method,from_email,total_to_send,memo",
 }
 ```
 
-Response if fail because ticket is bad:
+Response if fail because the ticket is bad:
 ```http
 {
 "bank_server":"Bank.CloudCoin.Global",
@@ -1736,7 +1735,6 @@ Response if fail for any other reason:
 
 
 
-
 # END OF CLOUDBANK VERSION 1
 
 
@@ -1748,11 +1746,11 @@ Response if fail for any other reason:
 Will transfer money from this bank to another. 
 
 # REQUEST PAYMENT SERVICE
-Requests payment from another bank
+
+Requests a payment from another bank
 
 # ACCEPT REQUEST PAYMENT SERIVCE
 Accepts a request for Payment from another bank
-
 
 
 
@@ -1784,10 +1782,9 @@ Sample: https://bank.mydomain.com/pay/get_receipt?rn=ea22cbae0394f6c6918691f2e2f
 
 ## Merchant Dominates
 1. Merchant Creates receipt
-2. Buyer give Merchant CloudCoins
+2. Buyer gives Merchant CloudCoins
 3. Merchant Deposits CC in CloudBank
 4. Merchant Confirms Purchase with CloudBank.
-
 
 
 
@@ -1957,7 +1954,7 @@ if fail
 # ##################
 ## Issue Reference Service 
 # ##################
-The Issue Reference service issues a "check" that refers to a real cloudcoin in the bank. 
+The Issue Reference service issues a "check" that refers to a real CloudCoin in the bank. 
 The purpose is to allow CloudCoins to circulate amoung the bank customers without having 
 to authenticate with the RAIDA everytime they change hands instead they will authenticate 
 with the bank.
@@ -1965,8 +1962,8 @@ with the bank.
 CloudCoin check format:
 
 Any file can store a CloudCoin check because the CloudCoin check is stored in the file name.
-However, it is best to have a txt (text) file with a .check extension. The text file keep
-he size of the file small.
+However, it is best to have a txt (text) file with a .check extension. The text file keeps
+the size of the file small.
 
 Example of a CloudCoin check embedded in a file name:
 
@@ -2078,7 +2075,7 @@ Note that the 1 after the word Authentic: is the serial number of the unit that 
 
 
 # Send Secure Message 
-Allows the bank to recieve a secure message like a check payment
+This allows the bank to receive a secure message, like a check payment.
 
 # Recieve Secure Message
 
